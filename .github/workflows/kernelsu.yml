@@ -1,0 +1,15 @@
+name: Executar setup.sh do KernelSU
+
+on:
+  workflow_dispatch:  # Permite rodar manualmente via GitHub
+  schedule:
+    - cron: '0 0 * * *'  # Roda diariamente à meia-noite (ajuste conforme necessário)
+
+jobs:
+  run-kernelsu-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Executar setup.sh do KernelSU
+        run: |
+          curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s v0.9.5
